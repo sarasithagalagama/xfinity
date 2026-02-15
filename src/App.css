@@ -1,0 +1,85 @@
+/* Xfinity Innovations Global Theme Overrides */
+
+:root {
+  --xfinity-bg: linear-gradient(to bottom right, #000428, #004e92);
+  --xfinity-sub-bg: #000212;
+  --xfinity-text: #ffffff;
+  --xfinity-accent-start: #8a63d2;
+  --xfinity-accent-end: #00c2ff;
+  --xfinity-gradient: linear-gradient(
+    135deg,
+    var(--xfinity-accent-start),
+    var(--xfinity-accent-end)
+  );
+}
+
+body,
+.main-bg,
+.circle-blur,
+.bg-img[data-overlay-dark],
+section.main-bg {
+  background-color: var(--xfinity-bg) !important;
+  color: var(--xfinity-text);
+}
+
+.sub-bg,
+.sub-bg2,
+.footer-class {
+  background-color: var(--xfinity-sub-bg) !important;
+}
+
+/* Typography & Accents */
+.main-color,
+.text-u,
+.navbar .nav-link .rolling-text:hover,
+a:hover {
+  color: var(--xfinity-accent-end) !important;
+  background: var(--xfinity-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+}
+
+/* Ensure solid text capability for non-gradient contexts if needed */
+.solid-accent {
+  color: var(--xfinity-accent-end) !important;
+  -webkit-text-fill-color: initial !important;
+}
+
+.main-colorbg,
+.butn-bg,
+.btn-circle:after {
+  background: var(--xfinity-gradient) !important;
+}
+
+/* Buttons */
+.butn.butn-bord {
+  border-color: var(--xfinity-accent-start) !important;
+  color: #fff !important;
+}
+
+.butn.butn-bord:hover {
+  background: var(--xfinity-gradient) !important;
+  border-color: transparent !important;
+  color: #fff !important;
+}
+
+.butn.butn-bord:hover span {
+  color: #fff !important;
+}
+
+/* Navbar */
+.navbar .nav-link {
+  color: #fff !important;
+}
+
+/* Footer specific overrides if any */
+footer.clean-footer {
+  background-color: var(--xfinity-sub-bg) !important;
+}
+
+/* Skills/Progress Bars */
+.skill-progress .progres {
+  background: var(--xfinity-gradient) !important;
+}

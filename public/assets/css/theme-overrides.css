@@ -1,0 +1,168 @@
+/* Xfinity Innovations Theme Overrides - High Specificity */
+
+:root {
+  --xfinity-bg: linear-gradient(to bottom right, #000428, #004e92);
+  --xfinity-sub-bg: #000212;
+  --xfinity-text: #ffffff;
+  --xfinity-accent-start: #8A63D2;
+  --xfinity-accent-end: #00C2FF;
+  --xfinity-holographic: linear-gradient(135deg, var(--xfinity-accent-start), var(--xfinity-accent-end));
+}
+
+/* Backgrounds */
+body, 
+html,
+.main-bg, 
+section.main-bg,
+.ui-view,
+[data-overlay-dark],
+.enc-wrapper {
+  background-color: var(--xfinity-bg) !important;
+  color: var(--xfinity-text) !important;
+}
+
+.sub-bg,
+.sub-bg2,
+.footer-class,
+footer {
+  background-color: var(--xfinity-sub-bg) !important;
+}
+
+/* Accents - Overriding Orange #fd5b38 */
+.main-color,
+.text-u, 
+.navbar .nav-link .rolling-text:hover,
+a:hover,
+.services .item .icon,
+.features .item .icon,
+.numbers .item .icon {
+  color: var(--xfinity-accent-end) !important;
+  background: var(--xfinity-holographic);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent; 
+}
+
+/* Strict Color Overrides for Elements that refuse to take gradient text */
+.services .item:hover .icon,
+.features .item:hover .icon {
+    -webkit-text-fill-color: var(--xfinity-accent-end) !important;
+    color: var(--xfinity-accent-end) !important;
+    background: none !important;
+}
+
+/* Background Gradients */
+.main-colorbg,
+.butn-bg,
+.btn-circle:after,
+.skill-progress .progres,
+.pagination .active a,
+.tags a:hover,
+.tagcloud a:hover {
+  background: var(--xfinity-holographic) !important;
+}
+
+/* Borders */
+.butn.butn-bord,
+.item-img.active,
+.input:focus, 
+textarea:focus {
+  border-color: var(--xfinity-accent-start) !important;
+}
+
+/* Buttons */
+.butn.butn-bord:hover {
+  background: var(--xfinity-holographic) !important;
+  border-color: transparent !important;
+  color: #fff !important;
+}
+
+/* SVG Fills if any */
+svg path[fill="#fd5b38"],
+svg circle[fill="#fd5b38"],
+svg rect[fill="#fd5b38"] {
+    fill: var(--xfinity-accent-end) !important;
+}
+
+svg path[stroke="#fd5b38"] {
+    stroke: var(--xfinity-accent-end) !important;
+}
+
+/* Hyper-specific override for Navbar Contact Button */
+.navbar .contact-button a.butn,
+.navbar .contact-button a.butn-bg,
+.navbar .contact-button .butn {
+    background: var(--xfinity-holographic) !important;
+    background-color: transparent !important; /* Reset solid color if any */
+    color: #fff !important;
+    border-color: transparent !important;
+}
+
+/* Ensure global orange background removal */
+.main-colorbg, .bg-orange {
+    background: var(--xfinity-holographic) !important;
+    background-color: var(--xfinity-accent-end) !important;
+}
+
+/* Selection */
+::selection {
+    background: var(--xfinity-accent-start);
+    color: #fff;
+}
+
+/* 
+   MASSIVE OVERRIDES FOR STUBBORN ORANGE 
+   - Nuking all potential orange gradients from templates
+   - Forcing Blue Theme on Header and Main Sections
+*/
+
+header.crev-header,
+.crev-header.bg-img,
+.main-bg,
+body,
+html {
+    background-image: none !important;
+    background: var(--xfinity-bg) !important;
+}
+
+/* Force the header overlay to be our blue, not orange */
+header.crev-header:before,
+header.crev-header:after,
+[data-overlay-dark]:before {
+     background: linear-gradient(to bottom right, #000428, #004e92) !important;
+     opacity: 0.8 !important;
+}
+
+/* Explicitly kill the orange gradient on the contact button */
+.contact-button a,
+.contact-button .butn,
+.navbar .butn-bg {
+    background: var(--xfinity-holographic) !important;
+    background-color: transparent !important;
+    border: 1px solid var(--xfinity-accent-end) !important;
+    color: #fff !important;
+}
+
+/* Ensure the "Let's contact" text is white */
+.navbar .contact-button a span {
+    color: #fff !important;
+}
+
+/* Hard override for any persistent orange overlays */
+[data-overlay-orange],
+.bg-orange,
+.overlay-orange {
+    background: linear-gradient(to bottom right, #000428, #004e92) !important;
+    opacity: 0.9 !important;
+}
+
+/* Ensure all overlay-dark use our blue */
+[data-overlay-dark] {
+    background: linear-gradient(to bottom right, #000428, #004e92) !important;
+}
+
+/* Specific fix for potential 'valign' sections having separate styling */
+.valign {
+    background: transparent !important; /* Let parent background show through */
+}

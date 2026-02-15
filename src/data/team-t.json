@@ -1,0 +1,22 @@
+[
+  {
+    "img": "/assets/imgs/team/t1.png",
+    "name": "David Cohen",
+    "subName": "Lead Developer"
+  },
+  {
+    "img": "/assets/imgs/team/t2.png",
+    "name": "Sarah Jenkins",
+    "subName": "UI/UX Designer"
+  },
+  {
+    "img": "/assets/imgs/team/t3.png",
+    "name": "Michael Chang",
+    "subName": "Backend Engineer"
+  },
+  {
+    "img": "/assets/imgs/team/t4.png",
+    "name": "Emily Davis",
+    "subName": "Project Manager"
+  }
+]
