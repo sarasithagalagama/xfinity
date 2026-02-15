@@ -1,24 +1,24 @@
-'use client';
-import Lines from '../components/common/Lines';
-import ProgressScroll from '../components/common/ProgressScroll';
-import Cursor from '../components/common/cusor';
-import LoadingScreen from '../components/common/loader';
-import Footer from '../components/landing/Footer';
-import { Helmet } from 'react-helmet';
-import Navbar from '../components/landing/Navbar';
+"use client";
+import Lines from "../components/common/Lines";
+import ProgressScroll from "../components/common/ProgressScroll";
+import Cursor from "../components/common/cusor";
+import LoadingScreen from "../components/common/loader";
+import Footer from "../components/landing/Footer";
+import { Helmet } from "react-helmet";
+import Navbar from "../components/landing/Navbar";
 
-import Header from '../components/landing/Header';
-import Marq from '../components/landing/Marq';
-import Pages from '../components/landing/Pages';
-import Show from '../components/landing/Show';
-import Testimonials from '../components/landing/Testimonials';
-import Demos from '../components/landing/Demos';
+import Header from "../components/landing/Header";
+import Marq from "../components/landing/Marq";
+import Pages from "../components/landing/Pages";
+import Show from "../components/landing/Show";
+import Testimonials from "../components/landing/Testimonials";
+import Demos from "../components/landing/Demos";
 // import gsap from 'gsap';
 // import { ScrollTrigger } from 'gsap/ScrollTrigger';
 // // import { ScrollSmoother } from 'gsap-trial/ScrollSmoother';
 
-import { useGSAP } from '@gsap/react';
-import { useEffect, useRef } from 'react';
+import { useGSAP } from "@gsap/react";
+import { useEffect, useRef } from "react";
 export default function Home() {
   const main = useRef();
   const smoother = useRef();
@@ -26,7 +26,7 @@ export default function Home() {
   useEffect(() => {
     const loadScript = (src) => {
       return new Promise((resolve, reject) => {
-        const script = document.createElement('script');
+        const script = document.createElement("script");
         script.src = src;
         script.async = true;
 
@@ -43,13 +43,13 @@ export default function Home() {
     };
 
     // Load ScrollSmoother.min.js first
-    loadScript('/assets/js/gsap.min.js')
+    loadScript("/assets/js/gsap.min.js")
       .then(() => {
-        loadScript('/assets/js/ScrollSmoother.min.js');
+        loadScript("/assets/js/ScrollSmoother.min.js");
       })
       .then(() => {
         // Once ScrollSmoother.min.js is loaded, load smoother-script.js
-        return loadScript('/assets/js/smoother-script.js');
+        return loadScript("/assets/js/smoother-script.js");
       })
       .catch((error) => {
         console.error(error.message);
@@ -64,7 +64,7 @@ export default function Home() {
   return (
     <>
       <Helmet>
-        <title>webfolio</title>
+        <title>Xfinity Innovations - Landing</title>
         <link rel="icon" href="/assets/imgs/favicon.ico" />
         <link rel="shortcut icon" href="/assets/imgs/favicon.ico" />
         <link rel="stylesheet" type="text/css" href="/assets/css/plugins.css" />

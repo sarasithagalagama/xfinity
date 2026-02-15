@@ -1,28 +1,28 @@
-import Lines from '../components/common/Lines';
-import ProgressScroll from '../components/common/ProgressScroll';
-import Cursor from '../components/common/cusor';
-import LoadingScreen from '../components/common/loader';
-import Footer from '../components/common/Footer';
-import Navbar from '../components/common/Navbar';
-import Marq2 from '../components/common/Marq2';
-import { Helmet } from 'react-helmet';
-import Header from '../components/home-personal/Header';
-import Clients from '../components/common/Clients';
+import Lines from "../components/common/Lines";
+import ProgressScroll from "../components/common/ProgressScroll";
+import Cursor from "../components/common/cusor";
+import LoadingScreen from "../components/common/loader";
+import Footer from "../components/common/Footer";
+import Navbar from "../components/common/Navbar";
+import Marq2 from "../components/common/Marq2";
+import { Helmet } from "react-helmet";
+import Header from "../components/home-personal/Header";
+import Clients from "../components/common/Clients";
 
-import Blog from '../components/home-digital-agency/Blog';
+import Blog from "../components/home-digital-agency/Blog";
 
-import Testimonials from '../components/home-modern-studio/Testimonials';
-import Marq from '../components/home-personal/Marq';
-import About from '../components/home-personal/About';
-import Portfolio from '../components/home-personal/Portfolio';
-import Skills from '../components/home-personal/Skills';
-import WOW from 'wowjs';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import Testimonials from "../components/home-modern-studio/Testimonials";
+import Marq from "../components/home-personal/Marq";
+import About from "../components/home-personal/About";
+import Portfolio from "../components/home-personal/Portfolio";
+import Skills from "../components/home-personal/Skills";
+import WOW from "wowjs";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 // import { ScrollSmoother } from 'gsap-trial/ScrollSmoother';
 
-import { useGSAP } from '@gsap/react';
-import { useEffect, useRef } from 'react';
+import { useGSAP } from "@gsap/react";
+import { useEffect, useRef } from "react";
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
 export default function HomePersonal() {
@@ -32,7 +32,7 @@ export default function HomePersonal() {
   useEffect(() => {
     const loadScript = (src) => {
       return new Promise((resolve, reject) => {
-        const script = document.createElement('script');
+        const script = document.createElement("script");
         script.src = src;
         script.async = true;
 
@@ -49,13 +49,13 @@ export default function HomePersonal() {
     };
 
     // Load ScrollSmoother.min.js first
-    loadScript('/assets/js/gsap.min.js')
+    loadScript("/assets/js/gsap.min.js")
       .then(() => {
-        loadScript('/assets/js/ScrollSmoother.min.js');
+        loadScript("/assets/js/ScrollSmoother.min.js");
       })
       .then(() => {
         // Once ScrollSmoother.min.js is loaded, load smoother-script.js
-        return loadScript('/assets/js/smoother-script.js');
+        return loadScript("/assets/js/smoother-script.js");
       })
       .catch((error) => {
         console.error(error.message);
@@ -67,9 +67,9 @@ export default function HomePersonal() {
     // };
   }, []);
   useEffect(() => {
-    if (typeof window !== 'undefined') {
+    if (typeof window !== "undefined") {
       new WOW.WOW({
-        animateClass: 'animated',
+        animateClass: "animated",
         offset: 100,
       }).init();
     }
@@ -77,7 +77,7 @@ export default function HomePersonal() {
   return (
     <>
       <Helmet>
-        <title>webfolio</title>
+        <title>Xfinity Innovations - Personal</title>
         <link rel="icon" href="/assets/imgs/favicon.ico" />
         <link rel="shortcut icon" href="/assets/imgs/favicon.ico" />
         <link rel="stylesheet" type="text/css" href="/assets/css/plugins.css" />

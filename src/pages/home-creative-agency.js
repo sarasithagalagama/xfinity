@@ -7,8 +7,16 @@ import Navbar from "../components/common/Navbar";
 import Marq2 from "../components/common/Marq2";
 import { Helmet } from "react-helmet";
 import Header from "../components/home-creative-agency/Header";
-import Testimonials from "../components/home-creative-agency/Testimonials";
-import Clients from "../components/common/Clients";
+
+import Services from "../components/home-creative-agency/Services";
+import Intro from "../components/home-creative-agency/Intro";
+import Numbers from "../components/home-creative-agency/Numbers";
+import Portfolio from "../components/home-creative-agency/Portfolio";
+import Intro2 from "../components/home-creative-agency/Intro2";
+import Blog from "../components/home-creative-agency/Blog";
+import WOW from "wowjs";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 import { useGSAP } from "@gsap/react";
 import { useEffect, useRef } from "react";
@@ -67,7 +75,7 @@ export default function HomeCreativeAgency() {
   return (
     <>
       <Helmet>
-        <title>webfolio</title>
+        <title>Xfinity Innovations</title>
         <link rel="icon" href="/assets/imgs/favicon.ico" />
         <link rel="shortcut icon" href="/assets/imgs/favicon.ico" />
         <link rel="stylesheet" type="text/css" href="/assets/css/plugins.css" />
@@ -108,8 +116,6 @@ export default function HomeCreativeAgency() {
               <Intro />
               <Numbers />
               <Portfolio />
-              <Intro2 />
-              <Intro2 />
               <Intro2 />
               <Blog />
               <Marq2 />

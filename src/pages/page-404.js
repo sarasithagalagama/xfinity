@@ -1,17 +1,17 @@
-import Lines from '../components/common/Lines';
-import ProgressScroll from '../components/common/ProgressScroll';
-import Cursor from '../components/common/cusor';
-import LoadingScreen from '../components/common/loader';
-import Navbar from '../components/common/Navbar';
-import { Helmet } from 'react-helmet';
-import Error from '../components/page-404/Error';
-import WOW from 'wowjs';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import Lines from "../components/common/Lines";
+import ProgressScroll from "../components/common/ProgressScroll";
+import Cursor from "../components/common/cusor";
+import LoadingScreen from "../components/common/loader";
+import Navbar from "../components/common/Navbar";
+import { Helmet } from "react-helmet";
+import Error from "../components/page-404/Error";
+import WOW from "wowjs";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 // import { ScrollSmoother } from 'gsap-trial/ScrollSmoother';
 
-import { useGSAP } from '@gsap/react';
-import { useEffect } from 'react';
+import { useGSAP } from "@gsap/react";
+import { useEffect } from "react";
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 export default function Page404() {
   // const main = useRef();
@@ -52,9 +52,9 @@ export default function Page404() {
   //   // };
   // }, []);
   useEffect(() => {
-    if (typeof window !== 'undefined') {
+    if (typeof window !== "undefined") {
       new WOW.WOW({
-        animateClass: 'animated',
+        animateClass: "animated",
         offset: 100,
       }).init();
     }
@@ -63,7 +63,7 @@ export default function Page404() {
   return (
     <>
       <Helmet>
-        <title>webfolio</title>
+        <title>Xfinity Innovations - 404</title>
         <link rel="icon" href="/assets/imgs/favicon.ico" />
         <link rel="shortcut icon" href="/assets/imgs/favicon.ico" />
         <link rel="stylesheet" type="text/css" href="/assets/css/plugins.css" />

@@ -1,28 +1,28 @@
-import Lines from '../components/common/Lines';
-import ProgressScroll from '../components/common/ProgressScroll';
-import Cursor from '../components/common/cusor';
-import LoadingScreen from '../components/common/loader';
-import Footer from '../components/common/Footer';
-import Navbar from '../components/common/Navbar';
-import Marq2 from '../components/common/Marq2';
-import { Helmet } from 'react-helmet';
-import Blog from '../components/home-main/Blog';
-import Header from '../components/home-modern-studio/Header';
-import Services from '../components/home-modern-studio/Services';
-import Intro from '../components/home-modern-studio/Intro';
-import Numbers from '../components/home-modern-studio/Numbers';
-import Portfolio from '../components/home-modern-studio/Portfolio';
-import Feat from '../components/home-modern-studio/Feat';
-import Clients from '../components/common/Clients';
-import Team from '../components/home-modern-studio/Team';
-import Testimonials from '../components/home-modern-studio/Testimonials';
-import WOW from 'wowjs';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import Lines from "../components/common/Lines";
+import ProgressScroll from "../components/common/ProgressScroll";
+import Cursor from "../components/common/cusor";
+import LoadingScreen from "../components/common/loader";
+import Footer from "../components/common/Footer";
+import Navbar from "../components/common/Navbar";
+import Marq2 from "../components/common/Marq2";
+import { Helmet } from "react-helmet";
+import Blog from "../components/home-main/Blog";
+import Header from "../components/home-modern-studio/Header";
+import Services from "../components/home-modern-studio/Services";
+import Intro from "../components/home-modern-studio/Intro";
+import Numbers from "../components/home-modern-studio/Numbers";
+import Portfolio from "../components/home-modern-studio/Portfolio";
+import Feat from "../components/home-modern-studio/Feat";
+import Clients from "../components/common/Clients";
+import Team from "../components/home-modern-studio/Team";
+import Testimonials from "../components/home-modern-studio/Testimonials";
+import WOW from "wowjs";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 // import { ScrollSmoother } from 'gsap-trial/ScrollSmoother';
 
-import { useGSAP } from '@gsap/react';
-import { useEffect, useRef } from 'react';
+import { useGSAP } from "@gsap/react";
+import { useEffect, useRef } from "react";
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
 export default function HomeModernStudio() {
@@ -32,7 +32,7 @@ export default function HomeModernStudio() {
   useEffect(() => {
     const loadScript = (src) => {
       return new Promise((resolve, reject) => {
-        const script = document.createElement('script');
+        const script = document.createElement("script");
         script.src = src;
         script.async = true;
 
@@ -49,13 +49,13 @@ export default function HomeModernStudio() {
     };
 
     // Load ScrollSmoother.min.js first
-    loadScript('/assets/js/gsap.min.js')
+    loadScript("/assets/js/gsap.min.js")
       .then(() => {
-        loadScript('/assets/js/ScrollSmoother.min.js');
+        loadScript("/assets/js/ScrollSmoother.min.js");
       })
       .then(() => {
         // Once ScrollSmoother.min.js is loaded, load smoother-script.js
-        return loadScript('/assets/js/smoother-script.js');
+        return loadScript("/assets/js/smoother-script.js");
       })
       .catch((error) => {
         console.error(error.message);
@@ -67,9 +67,9 @@ export default function HomeModernStudio() {
     // };
   }, []);
   useEffect(() => {
-    if (typeof window !== 'undefined') {
+    if (typeof window !== "undefined") {
       new WOW.WOW({
-        animateClass: 'animated',
+        animateClass: "animated",
         offset: 100,
       }).init();
     }
@@ -78,7 +78,7 @@ export default function HomeModernStudio() {
   return (
     <>
       <Helmet>
-        <title>webfolio</title>
+        <title>Xfinity Innovations - Modern Studio</title>
         <link rel="icon" href="/assets/imgs/favicon.ico" />
         <link rel="shortcut icon" href="/assets/imgs/favicon.ico" />
         <link rel="stylesheet" type="text/css" href="/assets/css/plugins.css" />

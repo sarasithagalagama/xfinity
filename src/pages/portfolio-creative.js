@@ -1,17 +1,17 @@
-import Lines from '../components/common/Lines';
-import ProgressScroll from '../components/common/ProgressScroll';
-import Cursor from '../components/common/cusor';
-import LoadingScreen from '../components/common/loader';
-import Navbar from '../components/common/Navbar';
-import { Helmet } from 'react-helmet';
-import Portfolio from '../components/p-creative/Portfolio';
-import WOW from 'wowjs';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import Lines from "../components/common/Lines";
+import ProgressScroll from "../components/common/ProgressScroll";
+import Cursor from "../components/common/cusor";
+import LoadingScreen from "../components/common/loader";
+import Navbar from "../components/common/Navbar";
+import { Helmet } from "react-helmet";
+import Portfolio from "../components/p-creative/Portfolio";
+import WOW from "wowjs";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 // import { ScrollSmoother } from 'gsap-trial/ScrollSmoother';
 
-import { useGSAP } from '@gsap/react';
-import { useEffect, useRef } from 'react';
+import { useGSAP } from "@gsap/react";
+import { useEffect, useRef } from "react";
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 export default function PortfolioCreative() {
   const main = useRef();
@@ -20,7 +20,7 @@ export default function PortfolioCreative() {
   useEffect(() => {
     const loadScript = (src) => {
       return new Promise((resolve, reject) => {
-        const script = document.createElement('script');
+        const script = document.createElement("script");
         script.src = src;
         script.async = true;
 
@@ -37,13 +37,13 @@ export default function PortfolioCreative() {
     };
 
     // Load ScrollSmoother.min.js first
-    loadScript('/assets/js/gsap.min.js')
+    loadScript("/assets/js/gsap.min.js")
       .then(() => {
-        loadScript('/assets/js/ScrollSmoother.min.js');
+        loadScript("/assets/js/ScrollSmoother.min.js");
       })
       .then(() => {
         // Once ScrollSmoother.min.js is loaded, load smoother-script.js
-        return loadScript('/assets/js/smoother-script.js');
+        return loadScript("/assets/js/smoother-script.js");
       })
       .catch((error) => {
         console.error(error.message);
@@ -55,9 +55,9 @@ export default function PortfolioCreative() {
     // };
   }, []);
   useEffect(() => {
-    if (typeof window !== 'undefined') {
+    if (typeof window !== "undefined") {
       new WOW.WOW({
-        animateClass: 'animated',
+        animateClass: "animated",
         offset: 100,
       }).init();
     }
@@ -65,7 +65,7 @@ export default function PortfolioCreative() {
   return (
     <>
       <Helmet>
-        <title>webfolio</title>
+        <title>Xfinity Innovations - Portfolio Creative</title>
         <link rel="icon" href="/assets/imgs/favicon.ico" />
         <link rel="shortcut icon" href="/assets/imgs/favicon.ico" />
         <link rel="stylesheet" type="text/css" href="/assets/css/plugins.css" />
