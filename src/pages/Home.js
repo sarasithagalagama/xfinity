@@ -8,6 +8,8 @@ import {
   MessageSquare,
   Monitor,
   ChevronDown,
+  Cloud,
+  TrendingUp,
 } from "lucide-react";
 import {
   SiReact,
@@ -17,7 +19,6 @@ import {
   SiPython,
   SiGo,
   SiPostgresql,
-  SiAmazonwebservices,
 } from "react-icons/si";
 import "../App.css";
 
@@ -173,7 +174,7 @@ export default function Home() {
               { icon: <SiPython />, label: "Python" },
               { icon: <SiGo />, label: "Go" },
               { icon: <SiPostgresql />, label: "PostgreSQL" },
-              { icon: <SiAmazonwebservices />, label: "AWS" },
+              { icon: <Cloud size={22} />, label: "AWS" },
             ].map(({ icon, label }) => (
               <div className="strip-circle" key={label} title={label}>
                 {icon}
@@ -331,6 +332,9 @@ export default function Home() {
           </div>
           <div className="why-card">
             <div className="why-vis why-vis--graph">
+              <div className="why-icon-wrap">
+                <TrendingUp size={28} />
+              </div>
               <div className="graph-line"></div>
             </div>
             <h3>Scalable Architecture</h3>
