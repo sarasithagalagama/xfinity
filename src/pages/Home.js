@@ -1,4 +1,5 @@
 ﻿import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import {
   ArrowRight,
   Shield,
@@ -10,6 +11,10 @@ import {
   ChevronDown,
   Cloud,
   TrendingUp,
+  Twitter,
+  Linkedin,
+  Github,
+  Youtube,
 } from "lucide-react";
 import {
   SiReact,
@@ -560,40 +565,28 @@ export default function Home() {
           </div>
           <div className="footer-col">
             <p className="footer-col-title">Services</p>
-            {[
-              "Website Development",
-              "Software Development",
-              "IT Consulting",
-              "SEO Services",
-              "Support",
-            ].map((l) => (
-              <a href="#services" key={l}>
-                {l}
-              </a>
-            ))}
+            <Link to="/services/website-development">Website Development</Link>
+            <Link to="/services/software-development">
+              Software Development
+            </Link>
+            <Link to="/services/it-consulting">IT Consulting</Link>
+            <Link to="/services/seo-services">SEO Services</Link>
+            <Link to="/support">Support</Link>
           </div>
           <div className="footer-col">
             <p className="footer-col-title">Company</p>
-            {["About Us", "Our Work", "Case Studies", "Careers", "Blog"].map(
-              (l) => (
-                <a href="#about" key={l}>
-                  {l}
-                </a>
-              ),
-            )}
+            <a href="#about">About Us</a>
+            <a href="#portfolio">Our Work</a>
+            <Link to="/case-studies">Case Studies</Link>
+            <Link to="/careers">Careers</Link>
+            <Link to="/blog">Blog</Link>
           </div>
           <div className="footer-col">
             <p className="footer-col-title">Legal</p>
-            {[
-              "Privacy Policy",
-              "Terms of Service",
-              "Cookie Policy",
-              "Accessibility",
-            ].map((l) => (
-              <a href="#home" key={l}>
-                {l}
-              </a>
-            ))}
+            <Link to="/privacy-policy">Privacy Policy</Link>
+            <Link to="/terms-of-service">Terms of Service</Link>
+            <Link to="/cookie-policy">Cookie Policy</Link>
+            <Link to="/accessibility">Accessibility</Link>
           </div>
         </div>
         <div className="container footer-bottom">
@@ -601,11 +594,42 @@ export default function Home() {
             &copy; 2026 Xfinity Innovations LLC. All rights reserved.
           </p>
           <div className="socials">
-            {["X", "Li", "Gh", "Yt"].map((s) => (
-              <div className="soc-icon" key={s}>
-                {s}
-              </div>
-            ))}
+            <a
+              className="soc-icon"
+              href="https://twitter.com"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="X / Twitter"
+            >
+              <Twitter size={15} />
+            </a>
+            <a
+              className="soc-icon"
+              href="https://linkedin.com"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="LinkedIn"
+            >
+              <Linkedin size={15} />
+            </a>
+            <a
+              className="soc-icon"
+              href="https://github.com"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="GitHub"
+            >
+              <Github size={15} />
+            </a>
+            <a
+              className="soc-icon"
+              href="https://youtube.com"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="YouTube"
+            >
+              <Youtube size={15} />
+            </a>
           </div>
         </div>
       </footer>
