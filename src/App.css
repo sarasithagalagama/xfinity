@@ -182,6 +182,12 @@ body::after {
   box-shadow: 0 0 10px var(--accent);
   flex-shrink: 0;
 }
+.header-logo {
+  height: 40px;
+  width: auto;
+  object-fit: contain;
+  display: block;
+}
 .nav-links {
   display: flex;
   align-items: center;
