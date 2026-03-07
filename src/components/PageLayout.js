@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { ArrowRight, Twitter, Linkedin, Github, Youtube } from "lucide-react";
+import { Link } from "react-router-dom";
+import { ArrowRight, Facebook, Instagram, Linkedin } from "lucide-react";
+import { FaWhatsapp } from "react-icons/fa";
 import logo from "../assets/images/logo.png";
 
 export default function PageLayout({ children }) {
   const [menuOpen, setMenuOpen] = useState(false);
-  const navigate = useNavigate();
 
   useEffect(() => {
     document.body.style.overflow = menuOpen ? "hidden" : "";
@@ -22,11 +22,6 @@ export default function PageLayout({ children }) {
     { label: "About", href: "/#about" },
     { label: "Contact", href: "/#contact" },
   ];
-
-  const handleBookDemo = () => {
-    const email = document.getElementById("pl-email")?.value;
-    if (email) navigate(`/#contact`);
-  };
 
   return (
     <div className="home-container" id="home">
@@ -76,29 +71,32 @@ export default function PageLayout({ children }) {
       <footer className="footer">
         <div className="container footer-inner">
           <div className="footer-brand">
-            <p className="footer-logo">Xfinity Innovations</p>
+            <p className="footer-logo">Xfinity Innovations by Infernite</p>
             <p className="muted text-sm footer-tagline">
               Engineering the future of digital experiences &mdash; bespoke,
               bold, and boundary-breaking.
             </p>
             <div className="footer-contact">
               <p className="footer-contact-title">Get in touch</p>
-              <p className="muted text-sm">hello@xfinityinnovations.com</p>
-              <p className="muted text-sm">+1 (800) 000-0000</p>
+              <a
+                className="muted text-sm footer-contact-link"
+                href="https://wa.me/94766338858"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <FaWhatsapp size={14} />
+                WhatsApp / Call: +94 76 633 8858
+              </a>
             </div>
             <div className="newsletter">
-              <input
-                id="pl-email"
-                type="email"
-                placeholder="Enter your email address"
-                className="nl-input"
-              />
-              <button
-                onClick={handleBookDemo}
+              <a
                 className="btn btn-fill-pill nl-btn"
+                href="https://wa.me/94766338858"
+                target="_blank"
+                rel="noreferrer"
               >
-                Book a Demo <ArrowRight size={15} />
-              </button>
+                Chat on WhatsApp <ArrowRight size={15} />
+              </a>
             </div>
           </div>
 
@@ -138,16 +136,25 @@ export default function PageLayout({ children }) {
           <div className="socials">
             <a
               className="soc-icon"
-              href="https://twitter.com"
+              href="http://facebook.com/xfinity.innovations"
               target="_blank"
               rel="noreferrer"
-              aria-label="X / Twitter"
+              aria-label="Facebook"
             >
-              <Twitter size={15} />
+              <Facebook size={15} />
             </a>
             <a
               className="soc-icon"
-              href="https://linkedin.com"
+              href="https://www.instagram.com/xfinity.innovations/"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Instagram"
+            >
+              <Instagram size={15} />
+            </a>
+            <a
+              className="soc-icon"
+              href="https://www.linkedin.com/company/xfinity-innovations/"
               target="_blank"
               rel="noreferrer"
               aria-label="LinkedIn"
@@ -156,21 +163,12 @@ export default function PageLayout({ children }) {
             </a>
             <a
               className="soc-icon"
-              href="https://github.com"
+              href="https://wa.me/94766338858"
               target="_blank"
               rel="noreferrer"
-              aria-label="GitHub"
+              aria-label="WhatsApp"
             >
-              <Github size={15} />
-            </a>
-            <a
-              className="soc-icon"
-              href="https://youtube.com"
-              target="_blank"
-              rel="noreferrer"
-              aria-label="YouTube"
-            >
-              <Youtube size={15} />
+              <FaWhatsapp size={15} />
             </a>
           </div>
         </div>
