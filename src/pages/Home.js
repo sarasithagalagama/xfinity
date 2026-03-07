@@ -70,13 +70,13 @@ export default function Home() {
       {/* NAVBAR */}
       <nav className={`navbar${menuOpen ? " open" : ""}`}>
         <div className="container nav-content">
-          <div className="nav-logo">
+          <a href="#home" className="nav-logo" onClick={() => setMenuOpen(false)}>
             <img
               src={logo}
               alt="Xfinity Innovations"
               className="nav-logo-img"
             />
-          </div>
+          </a>
           <div className={`nav-links${menuOpen ? " open" : ""}`} id="mobile-nav-links">
             {[
               "Home",
@@ -390,11 +390,6 @@ export default function Home() {
             </div>
           ))}
         </div>
-        <div className="dots">
-          <span className="dot dot--active"></span>
-          <span className="dot"></span>
-          <span className="dot"></span>
-        </div>
       </section>
 
       {/* ABOUT */}
@@ -577,8 +572,8 @@ export default function Home() {
           </div>
           <div className="footer-col">
             <p className="footer-col-title">Company</p>
-            <a href="#about">About Us</a>
-            <a href="#portfolio">Our Work</a>
+            <a href="/#about">About Us</a>
+            <a href="/#portfolio">Our Work</a>
             <Link to="/case-studies">Case Studies</Link>
             <Link to="/careers">Careers</Link>
             <Link to="/blog">Blog</Link>
