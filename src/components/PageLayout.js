@@ -30,8 +30,7 @@ export default function PageLayout({ children }) {
       <nav className="navbar">
         <div className="container nav-content">
           <Link to="/" className="nav-logo">
-            <span className="logo-dot"></span>
-            <span>Xfinity Innovations</span>
+            <img src="/assets/images/logo.png" alt="Xfinity Innovations" className="nav-logo-img" />
           </Link>
           <div className={`nav-links${menuOpen ? " open" : ""}`}>
             {navLinks.map(({ label, href }) => (
