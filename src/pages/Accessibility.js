@@ -32,7 +32,7 @@ const commitments = [
 export default function Accessibility() {
   return (
     <PageLayout>
-      <section className="inner-hero">
+      <section className="inner-hero inner-hero--legal">
         <div className="container inner-hero-inner" style={{ maxWidth: 760 }}>
           <p className="badge">Accessibility</p>
           <h1 className="inner-hero-title">Accessibility Statement</h1>
@@ -40,7 +40,7 @@ export default function Accessibility() {
         </div>
       </section>
 
-      <section className="section container">
+      <section className="container inner-legal-wrap">
         <div className="inner-legal-body">
           <div className="inner-legal-section">
             <h2 className="inner-legal-h2">Our Commitment</h2>

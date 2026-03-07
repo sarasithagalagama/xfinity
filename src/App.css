@@ -1432,6 +1432,15 @@ body::after {
 .inner-blog-meta { display: flex; align-items: center; gap: 5px; }
 
 /* Legal */
+.inner-hero--legal {
+  padding: 56px 0 16px;
+}
+.inner-hero--legal .inner-hero-sub {
+  margin-bottom: 0;
+}
+.inner-legal-wrap {
+  padding: 12px 0 64px;
+}
 .inner-legal-body { max-width: 720px; display: flex; flex-direction: column; gap: 0; }
 .inner-legal-section { padding: 28px 0; border-bottom: 1px solid var(--border-soft); }
 .inner-legal-section:last-child { border-bottom: none; }
@@ -1467,6 +1476,8 @@ body::after {
 @media (max-width: 520px) {
   .inner-grid-3, .inner-process-grid, .inner-blog-grid, .inner-grid-4 { grid-template-columns: 1fr; }
   .inner-hero { padding: 60px 0 44px; }
+  .inner-hero--legal { padding: 44px 0 10px; }
+  .inner-legal-wrap { padding: 8px 0 44px; }
   .inner-cookie-table {
     display: block;
     width: 100%;

@@ -37,9 +37,9 @@ export default function PageLayout({ children }) {
       {/* NAVBAR */}
       <nav className={`navbar${menuOpen ? " open" : ""}`}>
         <div className="container nav-content">
-          <Link to="/" className="nav-logo">
+          <a href="/#home" className="nav-logo" onClick={() => setMenuOpen(false)}>
             <img src={logo} alt="Xfinity Innovations" className="nav-logo-img" />
-          </Link>
+          </a>
           <div className={`nav-links${menuOpen ? " open" : ""}`} id="mobile-nav-links">
             {navLinks.map(({ label, href }) => (
               <a key={label} href={href} onClick={() => setMenuOpen(false)}>
@@ -48,7 +48,7 @@ export default function PageLayout({ children }) {
             ))}
           </div>
           <div className="nav-right">
-            <Link to="/#contact" className="btn btn-nav">
+            <Link to="/#contact" className="btn btn-nav" onClick={() => setMenuOpen(false)}>
               Get Started <ArrowRight size={15} />
             </Link>
             <button

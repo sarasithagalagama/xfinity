@@ -58,8 +58,17 @@ export default function Home() {
 
   const handleBookDemo = () => {
     if (!newsletterEmail.trim()) return;
-    window.location.hash = "contact";
+    window.location.href = "/#contact";
   };
+
+  const navLinks = [
+    { label: "Home", href: "/#home" },
+    { label: "What We Do", href: "/#whatwedo" },
+    { label: "Services", href: "/#services" },
+    { label: "Our Work", href: "/#portfolio" },
+    { label: "About", href: "/#about" },
+    { label: "Contact", href: "/#contact" },
+  ];
 
   return (
     <div className="home-container" id="home">
@@ -70,7 +79,7 @@ export default function Home() {
       {/* NAVBAR */}
       <nav className={`navbar${menuOpen ? " open" : ""}`}>
         <div className="container nav-content">
-          <a href="#home" className="nav-logo" onClick={() => setMenuOpen(false)}>
+          <a href="/#home" className="nav-logo" onClick={() => setMenuOpen(false)}>
             <img
               src={logo}
               alt="Xfinity Innovations"
@@ -78,27 +87,20 @@ export default function Home() {
             />
           </a>
           <div className={`nav-links${menuOpen ? " open" : ""}`} id="mobile-nav-links">
-            {[
-              "Home",
-              "What We Do",
-              "Services",
-              "Our Work",
-              "About",
-              "Contact",
-            ].map((l, i) => (
+            {navLinks.map(({ label, href }, i) => (
               <a
-                key={l}
-                href={`#${["home", "whatwedo", "services", "portfolio", "about", "contact"][i]}`}
+                key={label}
+                href={href}
                 className={i === 0 ? "active" : ""}
                 onClick={() => setMenuOpen(false)}
               >
-                {l}
+                {label}
               </a>
             ))}
           </div>
           <div className="nav-right">
             <a
-              href="#contact"
+              href="/#contact"
               className="btn btn-nav"
               onClick={() => setMenuOpen(false)}
             >
@@ -137,10 +139,10 @@ export default function Home() {
               ecosystems that inspire, elevate, and transform brands.
             </p>
             <div className="hero-btns">
-              <a href="#portfolio" className="btn btn-outline-pill">
+              <a href="/#portfolio" className="btn btn-outline-pill">
                 <MessageSquare size={16} /> View Our Work
               </a>
-              <a href="#contact" className="btn btn-fill-pill">
+              <a href="/#contact" className="btn btn-fill-pill">
                 Start a Project <ArrowRight size={16} />
               </a>
             </div>
@@ -232,7 +234,7 @@ export default function Home() {
               complex enterprise software solution, we deliver products that are
               as functional as they are beautiful.
             </p>
-            <a href="#services" className="btn btn-fill-pill hook-cta">
+            <a href="/#services" className="btn btn-fill-pill hook-cta">
               Explore Our Services <ArrowRight size={16} />
             </a>
           </div>
@@ -302,7 +304,7 @@ export default function Home() {
             </article>
           ))}
         </div>
-        <a href="#contact" className="btn btn-fill-pill mt-12">
+        <a href="/#contact" className="btn btn-fill-pill mt-12">
           Start a Project <ArrowRight size={16} />
         </a>
       </section>
@@ -524,7 +526,7 @@ export default function Home() {
           Join the businesses transforming their digital presence with
           boundary-breaking solutions.
         </p>
-        <a href="#contact" className="btn btn-fill-pill">
+        <a href="/#contact" className="btn btn-fill-pill">
           Start a Project &mdash; It&apos;s Free <ArrowRight size={16} />
         </a>
         <div className="globe">
