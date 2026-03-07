@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { ArrowRight, Twitter, Linkedin, Github, Youtube } from "lucide-react";
+import logo from "../assets/images/logo.png";
 
 export default function PageLayout({ children }) {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -30,7 +31,7 @@ export default function PageLayout({ children }) {
       <nav className="navbar">
         <div className="container nav-content">
           <Link to="/" className="nav-logo">
-            <img src="/assets/images/logo.png" alt="Xfinity Innovations" className="nav-logo-img" />
+            <img src={logo} alt="Xfinity Innovations" className="nav-logo-img" />
           </Link>
           <div className={`nav-links${menuOpen ? " open" : ""}`}>
             {navLinks.map(({ label, href }) => (
