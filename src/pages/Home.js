@@ -1,4 +1,4 @@
-﻿import React, { useState } from "react";
+﻿import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import {
   ArrowRight,
@@ -26,9 +26,15 @@ import {
   SiPostgresql,
 } from "react-icons/si";
 import "../App.css";
+import logo from "../assets/images/logo.png";
+import creative1 from "../assets/images/creative-1.jpeg";
+import creative2 from "../assets/images/creative-2.jpeg";
+import creative3 from "../assets/images/creative-3.jpeg";
+import creative4 from "../assets/images/creative-4.jpeg";
 
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [newsletterEmail, setNewsletterEmail] = useState("");
   const [formData, setFormData] = useState({
     name: "",
     company: "",
@@ -43,6 +49,18 @@ export default function Home() {
     alert("Thank you! We'll be in touch shortly.");
   };
 
+  useEffect(() => {
+    document.body.style.overflow = menuOpen ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [menuOpen]);
+
+  const handleBookDemo = () => {
+    if (!newsletterEmail.trim()) return;
+    window.location.hash = "contact";
+  };
+
   return (
     <div className="home-container" id="home">
       <div className="glow glow-top"></div>
@@ -50,13 +68,16 @@ export default function Home() {
       <div className="glow glow-bottom"></div>
 
       {/* NAVBAR */}
-      <nav className="navbar">
+      <nav className={`navbar${menuOpen ? " open" : ""}`}>
         <div className="container nav-content">
           <div className="nav-logo">
-            <span className="logo-dot"></span>
-            <span>Xfinity Innovations</span>
+            <img
+              src={logo}
+              alt="Xfinity Innovations"
+              className="nav-logo-img"
+            />
           </div>
-          <div className={`nav-links${menuOpen ? " open" : ""}`}>
+          <div className={`nav-links${menuOpen ? " open" : ""}`} id="mobile-nav-links">
             {[
               "Home",
               "What We Do",
@@ -76,12 +97,18 @@ export default function Home() {
             ))}
           </div>
           <div className="nav-right">
-            <button className="btn btn-nav">
+            <a
+              href="#contact"
+              className="btn btn-nav"
+              onClick={() => setMenuOpen(false)}
+            >
               Get Started <ArrowRight size={15} />
-            </button>
+            </a>
             <button
               className="burger"
               aria-label="menu"
+              aria-expanded={menuOpen}
+              aria-controls="mobile-nav-links"
               onClick={() => setMenuOpen((v) => !v)}
             >
               <span className="bar"></span>
@@ -241,66 +268,39 @@ export default function Home() {
       <section id="services" className="section container text-center">
         <p className="badge">Services</p>
         <h2 className="section-title">
-          Solutions Tailored
+          Services Tailored
           <br />
           to Your Ambition
         </h2>
-        <div className="svc-grid svc-grid--3">
-          {/* Website Development */}
-          <div className="svc-card">
-            <h3>Website Development</h3>
-            <p className="muted">
-              From sleek landing pages to robust e-commerce platforms, we create
-              responsive, SEO-optimized websites that convert visitors into
-              loyal customers.
-            </p>
-            <div className="card-vis">
-              <div className="mock-win">
-                <div className="win-bar"></div>
-                <div className="win-body">
-                  <div className="win-side"></div>
-                  <div className="win-main"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-          {/* Software Development */}
-          <div className="svc-card">
-            <h3>Software Development</h3>
-            <p className="muted">
-              Custom software built to solve your unique business challenges. We
-              specialise in agile development, ensuring transparency and quality
-              at every sprint.
-            </p>
-            <div className="card-vis card-code">
-              <code>
-                <span className="ck">import</span> React{" "}
-                <span className="ck">from</span> &apos;react&apos;;
-                <br />
-                <span className="ck">export default function</span>{" "}
-                <span className="cf">App</span>
-                {"() {"}
-                <br />
-                {"  return ("}
-                <br />
-                {"    "}&lt;div&gt;Hello World&lt;/div&gt;
-                <br />
-                {"  );"}
-                <br />
-                {"}"}
-              </code>
-            </div>
-          </div>
-          {/* IT Solutions */}
-          <div className="svc-card">
-            <h3>IT Solutions &amp; Consulting</h3>
-            <p className="muted">
-              Modernising your infrastructure. We provide cloud integration,
-              cybersecurity audits, and IT strategy to keep your business
-              resilient in a digital-first world.
-            </p>
-            <div className="card-vis grid-vis"></div>
-          </div>
+        <div className="svc-grid svc-grid--visual">
+          {[
+            {
+              title: "Creative Web Design",
+              copy: "Design beyond boundaries with visually bold websites that reflect your brand and keep audiences engaged.",
+              image: creative1,
+            },
+            {
+              title: "Custom Website Development",
+              copy: "From idea to impact with conversion-focused websites tailored to your business goals and customer journey.",
+              image: creative2,
+            },
+            {
+              title: "Brand-Led Digital Experiences",
+              copy: "Your vision, our code. We craft unique, high-performance web experiences that stand out in crowded markets.",
+              image: creative3,
+            },
+            {
+              title: "Performance & Optimization",
+              copy: "Websites that work wonders: fast, functional, scalable, and built to grow with your brand.",
+              image: creative4,
+            },
+          ].map(({ title, copy, image }) => (
+            <article className="svc-card" key={title}>
+              <img src={image} alt={title} className="svc-media" loading="lazy" />
+              <h3>{title}</h3>
+              <p className="muted">{copy}</p>
+            </article>
+          ))}
         </div>
         <a href="#contact" className="btn btn-fill-pill mt-12">
           Start a Project <ArrowRight size={16} />
@@ -557,8 +557,10 @@ export default function Home() {
                 type="email"
                 placeholder="Enter your email address"
                 className="nl-input"
+                value={newsletterEmail}
+                onChange={(e) => setNewsletterEmail(e.target.value)}
               />
-              <button className="btn btn-fill-pill nl-btn">
+              <button className="btn btn-fill-pill nl-btn" onClick={handleBookDemo}>
                 Book a Demo <ArrowRight size={15} />
               </button>
             </div>

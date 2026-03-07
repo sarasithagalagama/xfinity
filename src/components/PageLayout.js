@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { ArrowRight, Twitter, Linkedin, Github, Youtube } from "lucide-react";
 import logo from "../assets/images/logo.png";
@@ -6,6 +6,13 @@ import logo from "../assets/images/logo.png";
 export default function PageLayout({ children }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    document.body.style.overflow = menuOpen ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [menuOpen]);
 
   const navLinks = [
     { label: "Home", href: "/#home" },
@@ -28,12 +35,12 @@ export default function PageLayout({ children }) {
       <div className="glow glow-bottom"></div>
 
       {/* NAVBAR */}
-      <nav className="navbar">
+      <nav className={`navbar${menuOpen ? " open" : ""}`}>
         <div className="container nav-content">
           <Link to="/" className="nav-logo">
             <img src={logo} alt="Xfinity Innovations" className="nav-logo-img" />
           </Link>
-          <div className={`nav-links${menuOpen ? " open" : ""}`}>
+          <div className={`nav-links${menuOpen ? " open" : ""}`} id="mobile-nav-links">
             {navLinks.map(({ label, href }) => (
               <a key={label} href={href} onClick={() => setMenuOpen(false)}>
                 {label}
@@ -47,6 +54,8 @@ export default function PageLayout({ children }) {
             <button
               className="burger"
               aria-label="menu"
+              aria-expanded={menuOpen}
+              aria-controls="mobile-nav-links"
               onClick={() => setMenuOpen((v) => !v)}
             >
               <span className="bar"></span>
