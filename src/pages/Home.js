@@ -401,25 +401,43 @@ export default function Home() {
         </h2>
         <div className="port-grid">
           {[
-            { cls: "p-darkblue", label: "E-Commerce Platform" },
-            { cls: "p-purple", label: "SaaS Dashboard" },
-            { cls: "p-black", label: "Corporate Website" },
-            { cls: "p-mid", label: "Mobile App UI" },
-          ].map(({ cls, label }) => (
-            <div className={`port-card ${cls}`} key={cls}>
+            {
+              img: "screencapture-ananda100-lk-about-2026-03-25-12_44_57.png",
+              label: "Ananda College",
+              link: "https://ananda100.lk/",
+            },
+            {
+              img: "screencapture-exploresrilankawithus-2026-03-25-12_43_12.png",
+              label: "Explore Sri Lanka",
+              link: "https://www.exploresrilankawithus.com/",
+            },
+            {
+              img: "screencapture-infernation-2026-03-25-12_44_09.png",
+              label: "Infernation",
+              link: "https://www.infernation.com/",
+            },
+          ].map(({ img, label, link }) => (
+            <a
+              href={link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="port-card port-card--image"
+              key={img}
+              style={{ textDecoration: "none" }}
+            >
               <div className="port-bar">
                 <span className="port-dot"></span>
                 <span className="port-dot"></span>
                 <span className="port-dot"></span>
                 <span className="port-url"></span>
               </div>
-              <div className="port-body">
-                <div className="port-line port-line--med"></div>
-                <div className="port-line port-line--short"></div>
-                <div className="port-block"></div>
-              </div>
+              <img
+                src={`/assets/images/projects/${img}`}
+                alt={label}
+                className="port-media"
+              />
               <div className="port-overlay">{label}</div>
-            </div>
+            </a>
           ))}
         </div>
       </section>
