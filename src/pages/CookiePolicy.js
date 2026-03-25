@@ -11,7 +11,7 @@ const Section = ({ title, children }) => (
 export default function CookiePolicy() {
   return (
     <PageLayout>
-      <section className="inner-hero">
+      <section className="inner-hero inner-hero--legal">
         <div className="container inner-hero-inner" style={{ maxWidth: 760 }}>
           <p className="badge">Legal</p>
           <h1 className="inner-hero-title">Cookie Policy</h1>
@@ -19,7 +19,7 @@ export default function CookiePolicy() {
         </div>
       </section>
 
-      <section className="section container">
+      <section className="container inner-legal-wrap">
         <div className="inner-legal-body">
           <Section title="1. What Are Cookies?">
             <p className="muted">

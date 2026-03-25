@@ -1,4 +1,4 @@
-﻿import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import {
   ArrowRight,
@@ -11,11 +11,11 @@ import {
   ChevronDown,
   Cloud,
   TrendingUp,
-  Twitter,
+  Facebook,
+  Instagram,
   Linkedin,
-  Github,
-  Youtube,
 } from "lucide-react";
+import { FaWhatsapp } from "react-icons/fa";
 import {
   SiReact,
   SiNodedotjs,
@@ -26,6 +26,11 @@ import {
   SiPostgresql,
 } from "react-icons/si";
 import "../App.css";
+import logo from "../assets/images/logo.png";
+import creative1 from "../assets/images/creative-1.jpeg";
+import creative2 from "../assets/images/creative-2.jpeg";
+import creative3 from "../assets/images/creative-3.jpeg";
+import creative4 from "../assets/images/creative-4.jpeg";
 
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -43,6 +48,22 @@ export default function Home() {
     alert("Thank you! We'll be in touch shortly.");
   };
 
+  useEffect(() => {
+    document.body.style.overflow = menuOpen ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [menuOpen]);
+
+  const navLinks = [
+    { label: "Home", href: "/#home" },
+    { label: "What We Do", href: "/#whatwedo" },
+    { label: "Services", href: "/#services" },
+    { label: "Our Work", href: "/#portfolio" },
+    { label: "About", href: "/#about" },
+    { label: "Contact", href: "/#contact" },
+  ];
+
   return (
     <div className="home-container" id="home">
       <div className="glow glow-top"></div>
@@ -50,38 +71,40 @@ export default function Home() {
       <div className="glow glow-bottom"></div>
 
       {/* NAVBAR */}
-      <nav className="navbar">
+      <nav className={`navbar${menuOpen ? " open" : ""}`}>
         <div className="container nav-content">
-          <div className="nav-logo">
-            <span className="logo-dot"></span>
-            <span>Xfinity Innovations</span>
-          </div>
-          <div className={`nav-links${menuOpen ? " open" : ""}`}>
-            {[
-              "Home",
-              "What We Do",
-              "Services",
-              "Our Work",
-              "About",
-              "Contact",
-            ].map((l, i) => (
+          <a href="/#home" className="nav-logo" onClick={() => setMenuOpen(false)}>
+            <img
+              src={logo}
+              alt="Xfinity Innovations"
+              className="nav-logo-img"
+            />
+          </a>
+          <div className={`nav-links${menuOpen ? " open" : ""}`} id="mobile-nav-links">
+            {navLinks.map(({ label, href }, i) => (
               <a
-                key={l}
-                href={`#${["home", "whatwedo", "services", "portfolio", "about", "contact"][i]}`}
+                key={label}
+                href={href}
                 className={i === 0 ? "active" : ""}
                 onClick={() => setMenuOpen(false)}
               >
-                {l}
+                {label}
               </a>
             ))}
           </div>
           <div className="nav-right">
-            <button className="btn btn-nav">
+            <a
+              href="/#contact"
+              className="btn btn-nav"
+              onClick={() => setMenuOpen(false)}
+            >
               Get Started <ArrowRight size={15} />
-            </button>
+            </a>
             <button
               className="burger"
               aria-label="menu"
+              aria-expanded={menuOpen}
+              aria-controls="mobile-nav-links"
               onClick={() => setMenuOpen((v) => !v)}
             >
               <span className="bar"></span>
@@ -110,10 +133,10 @@ export default function Home() {
               ecosystems that inspire, elevate, and transform brands.
             </p>
             <div className="hero-btns">
-              <a href="#portfolio" className="btn btn-outline-pill">
+              <a href="/#portfolio" className="btn btn-outline-pill">
                 <MessageSquare size={16} /> View Our Work
               </a>
-              <a href="#contact" className="btn btn-fill-pill">
+              <a href="/#contact" className="btn btn-fill-pill">
                 Start a Project <ArrowRight size={16} />
               </a>
             </div>
@@ -205,7 +228,7 @@ export default function Home() {
               complex enterprise software solution, we deliver products that are
               as functional as they are beautiful.
             </p>
-            <a href="#services" className="btn btn-fill-pill hook-cta">
+            <a href="/#services" className="btn btn-fill-pill hook-cta">
               Explore Our Services <ArrowRight size={16} />
             </a>
           </div>
@@ -241,68 +264,41 @@ export default function Home() {
       <section id="services" className="section container text-center">
         <p className="badge">Services</p>
         <h2 className="section-title">
-          Solutions Tailored
+          Services Tailored
           <br />
           to Your Ambition
         </h2>
-        <div className="svc-grid svc-grid--3">
-          {/* Website Development */}
-          <div className="svc-card">
-            <h3>Website Development</h3>
-            <p className="muted">
-              From sleek landing pages to robust e-commerce platforms, we create
-              responsive, SEO-optimized websites that convert visitors into
-              loyal customers.
-            </p>
-            <div className="card-vis">
-              <div className="mock-win">
-                <div className="win-bar"></div>
-                <div className="win-body">
-                  <div className="win-side"></div>
-                  <div className="win-main"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-          {/* Software Development */}
-          <div className="svc-card">
-            <h3>Software Development</h3>
-            <p className="muted">
-              Custom software built to solve your unique business challenges. We
-              specialise in agile development, ensuring transparency and quality
-              at every sprint.
-            </p>
-            <div className="card-vis card-code">
-              <code>
-                <span className="ck">import</span> React{" "}
-                <span className="ck">from</span> &apos;react&apos;;
-                <br />
-                <span className="ck">export default function</span>{" "}
-                <span className="cf">App</span>
-                {"() {"}
-                <br />
-                {"  return ("}
-                <br />
-                {"    "}&lt;div&gt;Hello World&lt;/div&gt;
-                <br />
-                {"  );"}
-                <br />
-                {"}"}
-              </code>
-            </div>
-          </div>
-          {/* IT Solutions */}
-          <div className="svc-card">
-            <h3>IT Solutions &amp; Consulting</h3>
-            <p className="muted">
-              Modernising your infrastructure. We provide cloud integration,
-              cybersecurity audits, and IT strategy to keep your business
-              resilient in a digital-first world.
-            </p>
-            <div className="card-vis grid-vis"></div>
-          </div>
+        <div className="svc-grid svc-grid--visual">
+          {[
+            {
+              title: "Creative Web Design",
+              copy: "Design beyond boundaries with visually bold websites that reflect your brand and keep audiences engaged.",
+              image: creative1,
+            },
+            {
+              title: "Custom Website Development",
+              copy: "From idea to impact with conversion-focused websites tailored to your business goals and customer journey.",
+              image: creative2,
+            },
+            {
+              title: "Brand-Led Digital Experiences",
+              copy: "Your vision, our code. We craft unique, high-performance web experiences that stand out in crowded markets.",
+              image: creative3,
+            },
+            {
+              title: "Performance & Optimization",
+              copy: "Websites that work wonders: fast, functional, scalable, and built to grow with your brand.",
+              image: creative4,
+            },
+          ].map(({ title, copy, image }) => (
+            <article className="svc-card" key={title}>
+              <img src={image} alt={title} className="svc-media" loading="lazy" />
+              <h3>{title}</h3>
+              <p className="muted">{copy}</p>
+            </article>
+          ))}
         </div>
-        <a href="#contact" className="btn btn-fill-pill mt-12">
+        <a href="/#contact" className="btn btn-fill-pill mt-12">
           Start a Project <ArrowRight size={16} />
         </a>
       </section>
@@ -389,11 +385,6 @@ export default function Home() {
               <div className="port-overlay">{label}</div>
             </div>
           ))}
-        </div>
-        <div className="dots">
-          <span className="dot dot--active"></span>
-          <span className="dot"></span>
-          <span className="dot"></span>
         </div>
       </section>
 
@@ -529,7 +520,7 @@ export default function Home() {
           Join the businesses transforming their digital presence with
           boundary-breaking solutions.
         </p>
-        <a href="#contact" className="btn btn-fill-pill">
+        <a href="/#contact" className="btn btn-fill-pill">
           Start a Project &mdash; It&apos;s Free <ArrowRight size={16} />
         </a>
         <div className="globe">
@@ -542,25 +533,32 @@ export default function Home() {
       <footer className="footer">
         <div className="container footer-inner">
           <div className="footer-brand">
-            <p className="footer-logo">Xfinity Innovations</p>
+            <p className="footer-logo">Xfinity Innovations by Infernite</p>
             <p className="muted text-sm footer-tagline">
               Engineering the future of digital experiences &mdash; bespoke,
               bold, and boundary-breaking.
             </p>
             <div className="footer-contact">
               <p className="footer-contact-title">Get in touch</p>
-              <p className="muted text-sm">hello@xfinityinnovations.com</p>
-              <p className="muted text-sm">+1 (800) 000-0000</p>
+              <a
+                className="muted text-sm footer-contact-link"
+                href="https://wa.me/94766338858"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <FaWhatsapp size={14} />
+                WhatsApp / Call: +94 76 633 8858
+              </a>
             </div>
             <div className="newsletter">
-              <input
-                type="email"
-                placeholder="Enter your email address"
-                className="nl-input"
-              />
-              <button className="btn btn-fill-pill nl-btn">
-                Book a Demo <ArrowRight size={15} />
-              </button>
+              <a
+                className="btn btn-fill-pill nl-btn"
+                href="https://wa.me/94766338858"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Chat on WhatsApp <ArrowRight size={15} />
+              </a>
             </div>
           </div>
           <div className="footer-col">
@@ -575,8 +573,8 @@ export default function Home() {
           </div>
           <div className="footer-col">
             <p className="footer-col-title">Company</p>
-            <a href="#about">About Us</a>
-            <a href="#portfolio">Our Work</a>
+            <a href="/#about">About Us</a>
+            <a href="/#portfolio">Our Work</a>
             <Link to="/case-studies">Case Studies</Link>
             <Link to="/careers">Careers</Link>
             <Link to="/blog">Blog</Link>
@@ -596,16 +594,25 @@ export default function Home() {
           <div className="socials">
             <a
               className="soc-icon"
-              href="https://twitter.com"
+              href="http://facebook.com/xfinity.innovations"
               target="_blank"
               rel="noreferrer"
-              aria-label="X / Twitter"
+              aria-label="Facebook"
             >
-              <Twitter size={15} />
+              <Facebook size={15} />
             </a>
             <a
               className="soc-icon"
-              href="https://linkedin.com"
+              href="https://www.instagram.com/xfinity.innovations/"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Instagram"
+            >
+              <Instagram size={15} />
+            </a>
+            <a
+              className="soc-icon"
+              href="https://www.linkedin.com/company/xfinity-innovations/"
               target="_blank"
               rel="noreferrer"
               aria-label="LinkedIn"
@@ -614,21 +621,12 @@ export default function Home() {
             </a>
             <a
               className="soc-icon"
-              href="https://github.com"
+              href="https://wa.me/94766338858"
               target="_blank"
               rel="noreferrer"
-              aria-label="GitHub"
+              aria-label="WhatsApp"
             >
-              <Github size={15} />
-            </a>
-            <a
-              className="soc-icon"
-              href="https://youtube.com"
-              target="_blank"
-              rel="noreferrer"
-              aria-label="YouTube"
-            >
-              <Youtube size={15} />
+              <FaWhatsapp size={15} />
             </a>
           </div>
         </div>

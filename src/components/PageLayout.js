@@ -1,10 +1,18 @@
-import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { ArrowRight, Twitter, Linkedin, Github, Youtube } from "lucide-react";
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import { ArrowRight, Facebook, Instagram, Linkedin } from "lucide-react";
+import { FaWhatsapp } from "react-icons/fa";
+import logo from "../assets/images/logo.png";
 
 export default function PageLayout({ children }) {
   const [menuOpen, setMenuOpen] = useState(false);
-  const navigate = useNavigate();
+
+  useEffect(() => {
+    document.body.style.overflow = menuOpen ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [menuOpen]);
 
   const navLinks = [
     { label: "Home", href: "/#home" },
@@ -15,11 +23,6 @@ export default function PageLayout({ children }) {
     { label: "Contact", href: "/#contact" },
   ];
 
-  const handleBookDemo = () => {
-    const email = document.getElementById("pl-email")?.value;
-    if (email) navigate(`/#contact`);
-  };
-
   return (
     <div className="home-container" id="home">
       <div className="glow glow-top"></div>
@@ -27,16 +30,19 @@ export default function PageLayout({ children }) {
       <div className="glow glow-bottom"></div>
 
       {/* NAVBAR */}
-      <nav className="navbar">
+      <nav className={`navbar${menuOpen ? " open" : ""}`}>
         <div className="container nav-content">
-          <Link to="/" className="nav-logo">
+          <Link to="/" className="nav-logo" onClick={() => setMenuOpen(false)}>
             <img
-              src="/assets/images/logo/Xfinity Logo W2.png"
+              src={logo}
               alt="Xfinity Innovations"
-              className="header-logo"
+              className="nav-logo-img"
             />
           </Link>
-          <div className={`nav-links${menuOpen ? " open" : ""}`}>
+          <div
+            className={`nav-links${menuOpen ? " open" : ""}`}
+            id="mobile-nav-links"
+          >
             {navLinks.map(({ label, href }) => (
               <a key={label} href={href} onClick={() => setMenuOpen(false)}>
                 {label}
@@ -44,12 +50,18 @@ export default function PageLayout({ children }) {
             ))}
           </div>
           <div className="nav-right">
-            <Link to="/#contact" className="btn btn-nav">
+            <Link
+              to="/#contact"
+              className="btn btn-nav"
+              onClick={() => setMenuOpen(false)}
+            >
               Get Started <ArrowRight size={15} />
             </Link>
             <button
               className="burger"
               aria-label="menu"
+              aria-expanded={menuOpen}
+              aria-controls="mobile-nav-links"
               onClick={() => setMenuOpen((v) => !v)}
             >
               <span className="bar"></span>
@@ -70,29 +82,32 @@ export default function PageLayout({ children }) {
       <footer className="footer">
         <div className="container footer-inner">
           <div className="footer-brand">
-            <p className="footer-logo">Xfinity Innovations</p>
+            <p className="footer-logo">Xfinity Innovations by Infernite</p>
             <p className="muted text-sm footer-tagline">
               Engineering the future of digital experiences &mdash; bespoke,
               bold, and boundary-breaking.
             </p>
             <div className="footer-contact">
               <p className="footer-contact-title">Get in touch</p>
-              <p className="muted text-sm">hello@xfinityinnovations.com</p>
-              <p className="muted text-sm">+1 (800) 000-0000</p>
+              <a
+                className="muted text-sm footer-contact-link"
+                href="https://wa.me/94766338858"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <FaWhatsapp size={14} />
+                WhatsApp / Call: +94 76 633 8858
+              </a>
             </div>
             <div className="newsletter">
-              <input
-                id="pl-email"
-                type="email"
-                placeholder="Enter your email address"
-                className="nl-input"
-              />
-              <button
-                onClick={handleBookDemo}
+              <a
                 className="btn btn-fill-pill nl-btn"
+                href="https://wa.me/94766338858"
+                target="_blank"
+                rel="noreferrer"
               >
-                Book a Demo <ArrowRight size={15} />
-              </button>
+                Chat on WhatsApp <ArrowRight size={15} />
+              </a>
             </div>
           </div>
 
@@ -132,16 +147,25 @@ export default function PageLayout({ children }) {
           <div className="socials">
             <a
               className="soc-icon"
-              href="https://twitter.com"
+              href="http://facebook.com/xfinity.innovations"
               target="_blank"
               rel="noreferrer"
-              aria-label="X / Twitter"
+              aria-label="Facebook"
             >
-              <Twitter size={15} />
+              <Facebook size={15} />
             </a>
             <a
               className="soc-icon"
-              href="https://linkedin.com"
+              href="https://www.instagram.com/xfinity.innovations/"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Instagram"
+            >
+              <Instagram size={15} />
+            </a>
+            <a
+              className="soc-icon"
+              href="https://www.linkedin.com/company/xfinity-innovations/"
               target="_blank"
               rel="noreferrer"
               aria-label="LinkedIn"
@@ -150,21 +174,12 @@ export default function PageLayout({ children }) {
             </a>
             <a
               className="soc-icon"
-              href="https://github.com"
+              href="https://wa.me/94766338858"
               target="_blank"
               rel="noreferrer"
-              aria-label="GitHub"
+              aria-label="WhatsApp"
             >
-              <Github size={15} />
-            </a>
-            <a
-              className="soc-icon"
-              href="https://youtube.com"
-              target="_blank"
-              rel="noreferrer"
-              aria-label="YouTube"
-            >
-              <Youtube size={15} />
+              <FaWhatsapp size={15} />
             </a>
           </div>
         </div>
