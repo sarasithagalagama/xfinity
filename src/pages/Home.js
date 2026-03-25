@@ -70,17 +70,48 @@ export default function Home() {
       <div className="glow glow-mid"></div>
       <div className="glow glow-bottom"></div>
 
+      {/* FLOATING BG ELEMENTS */}
+      <div className="bg-elements">
+        <img
+          src="/assets/images/bg%20images/Flyer%202.png"
+          alt=""
+          className="floating-el el-1"
+        />
+        <img
+          src="/assets/images/bg%20images/Flyer%2022.png"
+          alt=""
+          className="floating-el el-2"
+        />
+        <img
+          src="/assets/images/bg%20images/Flyer%2023.png"
+          alt=""
+          className="floating-el el-3"
+        />
+        <img
+          src="/assets/images/bg%20images/Flyer%2024.png"
+          alt=""
+          className="floating-el el-4"
+        />
+      </div>
+
       {/* NAVBAR */}
       <nav className={`navbar${menuOpen ? " open" : ""}`}>
         <div className="container nav-content">
-          <a href="/#home" className="nav-logo" onClick={() => setMenuOpen(false)}>
+          <a
+            href="/#home"
+            className="nav-logo"
+            onClick={() => setMenuOpen(false)}
+          >
             <img
               src={logo}
               alt="Xfinity Innovations"
               className="nav-logo-img"
             />
           </a>
-          <div className={`nav-links${menuOpen ? " open" : ""}`} id="mobile-nav-links">
+          <div
+            className={`nav-links${menuOpen ? " open" : ""}`}
+            id="mobile-nav-links"
+          >
             {navLinks.map(({ label, href }, i) => (
               <a
                 key={label}
@@ -292,7 +323,12 @@ export default function Home() {
             },
           ].map(({ title, copy, image }) => (
             <article className="svc-card" key={title}>
-              <img src={image} alt={title} className="svc-media" loading="lazy" />
+              <img
+                src={image}
+                alt={title}
+                className="svc-media"
+                loading="lazy"
+              />
               <h3>{title}</h3>
               <p className="muted">{copy}</p>
             </article>
@@ -533,7 +569,14 @@ export default function Home() {
       <footer className="footer">
         <div className="container footer-inner">
           <div className="footer-brand">
-            <p className="footer-logo">Xfinity Innovations by Infernite</p>
+            <Link to="/" className="footer-logo-link">
+              <img
+                src="/assets/images/SiteLogo.png"
+                alt="Xfinity Innovations"
+                className="footer-logo-img"
+              />
+              <span className="footer-logo-text">Xfinity Innovations</span>
+            </Link>
             <p className="muted text-sm footer-tagline">
               Engineering the future of digital experiences &mdash; bespoke,
               bold, and boundary-breaking.
