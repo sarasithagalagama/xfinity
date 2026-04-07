@@ -343,7 +343,7 @@ export default function Home() {
       <section className="section container">
         <div className="why-head">
           <div>
-            <p className="badge">Why Choose Us?</p>
+            <p className="badge why-badge">Why Choose Us?</p>
             <h2 className="section-title text-left">
               Crafted for impact,
               <br />
